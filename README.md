@@ -28,4 +28,4 @@ Add `logger_interceptor` to your `pubspec.yaml` dependencies:
 
 ```yaml
 dependencies:
-  logger_interceptor: ^0.0.4
+  logger_interceptor: ^0.0.5
