@@ -83,7 +83,6 @@ class ItemAPIWidget extends StatelessWidget {
   final LogEntry log;
 
   const ItemAPIWidget({
-    super.key,
     required this.log,
   });
 

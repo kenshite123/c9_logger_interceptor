@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:logger_interceptor/app_run_time.dart';
 import 'package:logger_interceptor/notification_service.dart';
@@ -80,7 +80,7 @@ class LoggerInterceptor extends InterceptorsWrapper {
       final file = File(logFilePath);
       await file.writeAsString(logEntry.toString(), mode: FileMode.append);
     } catch (e) {
-      print('Failed to save crash log to file: $e');
+      debugPrint('Failed to save crash log to file: $e');
     }
   }
 

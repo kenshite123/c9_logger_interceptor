@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger_interceptor/c9.dart';
 import 'package:logger_interceptor/logger_interceptor.dart';
+import 'package:logger_interceptor/presentation/list_api_screen.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -59,8 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     dio = Dio(
       BaseOptions(
-        baseUrl:
-            'https://httpbin.org',
+        baseUrl: 'https://httpbin.org',
         connectTimeout: Duration(seconds: 60),
         receiveTimeout: Duration(seconds: 60),
         sendTimeout: Duration(seconds: 60),
@@ -83,28 +81,24 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             OutlinedButton(onPressed: _callAPI, child: Text('Call API')),
             OutlinedButton(
-              onPressed: () async {
-                List<File> logFiles = await C9.getListLogFiles();
-                for (var file in logFiles) {
-                  print(
-                    "log file: ${file.path} - length: ${await file.length()}",
-                  );
-                }
-              },
-              child: Text('Get Log Files'),
-            ),
-            OutlinedButton(
               onPressed: () {
-                throw Exception("Test crash triggered by button");
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ListAPIScreen()),
+                );
               },
-              child: Text('Action crash'),
+              child: Text('Open List API Screen'),
             ),
-            OutlinedButton(
-              onPressed: () {
-                // NotificationService.showIndividualNotification();
-              },
-              child: Text('Send notification'),
-            ),
+            // OutlinedButton(
+            //   onPressed: () async {
+            //     List<File> logFiles = await C9.getListLogFiles();
+            //     for (var file in logFiles) {
+            //       print(
+            //         "log file: ${file.path} - length: ${await file.length()}",
+            //       );
+            //     }
+            //   },
+            //   child: Text('Get Log Files'),
+            // ),
           ],
         ),
       ),
@@ -128,6 +122,5 @@ class _MyHomePageState extends State<MyHomePage> {
     dio.get('/status/200');
     dio.get('/status/400');
     dio.get('/status/500');
-
   }
 }
