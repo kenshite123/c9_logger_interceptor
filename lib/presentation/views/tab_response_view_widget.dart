@@ -17,9 +17,10 @@ class ResponseViewWidget extends StatelessWidget {
     String contentType = log.response?.headers.value('content-type') ?? '';
 
     String responseData = "";
-    if (log.response?.data != null &&
-        log.response!.data is Map<String, dynamic>) {
-      responseData = jsonEncode(log.response?.data);
+    if (log.response!.data is Map<String, dynamic>) {
+      // responseData = jsonEncode(log.response?.data);
+      responseData =
+          const JsonEncoder.withIndent('  ').convert(log.response?.data);
     } else {
       responseData = log.response?.data?.toString() ?? '';
     }

@@ -97,83 +97,86 @@ class ItemAPIWidget extends StatelessWidget {
           ),
         );
       },
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 80,
-            width: 80,
-            child: Center(
-              child: Text(
-                '${log.response?.statusCode}',
-                style: TextStyle(
-                  color: HttpStatusColors.forStatus(log.response?.statusCode),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+      child: Container(
+        color: Colors.white,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 80,
+              width: 80,
+              child: Center(
+                child: Text(
+                  '${log.response?.statusCode}',
+                  style: TextStyle(
+                    color: HttpStatusColors.forStatus(log.response?.statusCode),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "${log.request?.method.toUpperCase()} ${log.request?.path}",
-                    style: TextStyle(
-                      color:
-                          HttpStatusColors.forStatus(log.response?.statusCode),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${log.request?.method.toUpperCase()} ${log.request?.path}",
+                      style: TextStyle(
+                        color:
+                            HttpStatusColors.forStatus(log.response?.statusCode),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          log.formattedStart,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                    SizedBox(height: 5),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            log.formattedStart,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          "${log.duration}ms",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            "${log.duration}ms",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          "${log.responseSizeBytes}B",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            "${log.responseSizeBytes}B",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

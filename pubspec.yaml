@@ -1,6 +1,6 @@
 name: logger_interceptor
 description: "A Flutter library that support for write log based on dio library."
-version: 0.0.7
+version: 0.0.8
 repository: https://github.com/kenshite123/c9_logger_interceptor
 
 environment:

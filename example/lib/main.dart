@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger_interceptor/c9.dart';
-import 'package:logger_interceptor/logger_interceptor.dart';
 import 'package:logger_interceptor/presentation/list_api_screen.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -9,17 +8,17 @@ final navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  FlutterError.onError = (FlutterErrorDetails details) {
-    // Default behavior (print to console)
-    FlutterError.dumpErrorToConsole(details);
-
-    // Custom logging
-    print("Flutter error: ${details.exceptionAsString()}\n${details.stack}");
-  };
+  // FlutterError.onError = (FlutterErrorDetails details) {
+  //   // Default behavior (print to console)
+  //   FlutterError.dumpErrorToConsole(details);
+  //
+  //   // Custom logging
+  //   print("Flutter error: ${details.exceptionAsString()}\n${details.stack}");
+  // };
 
   runApp(const MyApp());
 
-  await C9.initialize(
+  await Logger.initialize(
     isShowLogInNotification: true,
     navigatorKey: navigatorKey,
   );
